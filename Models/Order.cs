@@ -13,6 +13,8 @@ namespace bi_dashboard_api.Models
         public int CustomerId { get; set; }
 
         [ForeignKey("CustomerId")]
+
+
         public Customer Customer { get; set; }  // Changed from object to Customer
 
         [Column(TypeName = "decimal(18,2)")]

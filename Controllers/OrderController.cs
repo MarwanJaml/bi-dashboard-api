@@ -15,9 +15,9 @@ namespace bi_dashboard_api.Controllers
         {
             _context = context;
         }
+
+
         // GET: api/Order/pageNumber/pageSize
-
-
         [HttpGet("{pageNumber}/{pageSize}")]
         public IActionResult Get(int pageNumber, int pageSize)
         {
@@ -30,7 +30,7 @@ namespace bi_dashboard_api.Controllers
 
             var data = _context.Orders
                 .Include(o => o.Customer)  // Include related Customer data
-                .OrderBy(o => o.Placed)    // Order by placement date
+                .OrderBy(o => o.Id)    // Order by placement date
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
