@@ -15,7 +15,7 @@ namespace bi_dashboard_api.Models
         [ForeignKey("CustomerId")]
 
 
-        public Customer Customer { get; set; }  // Changed from object to Customer
+        public Customer Customer { get; set; }  
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal Total { get; set; }

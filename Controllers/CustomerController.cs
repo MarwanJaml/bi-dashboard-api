@@ -43,14 +43,14 @@ public class CustomerController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        // Reset IDs to let the database generate them
+        
         customer.Id = 0;
         if (customer.Orders != null)
         {
             foreach (var order in customer.Orders)
             {
                 order.Id = 0;
-                order.CustomerId = 0; // This will be set correctly when saved
+                order.CustomerId = 0; 
             }
         }
 

@@ -48,7 +48,7 @@ namespace bi_dashboard_api.Controllers
             }
 
             _context.SaveChanges();
-            return Ok(server); // Changed from NoContent() to Ok(server)
+            return Ok(server);
         }
     }
 }

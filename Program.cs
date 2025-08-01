@@ -7,9 +7,6 @@ using System.Text.Json.Serialization;
 
 
 
-
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
@@ -55,9 +52,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-// ============================================
+
 // APPLICATION STARTUP SEEDING SECTION
-// ============================================
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApiContext>();
@@ -118,9 +114,8 @@ if (app.Environment.IsDevelopment())
 
 app.Run();
 
-// ============================================
+
 // SEEDING METHOD - This is where the magic happens
-// ============================================
 async Task SeedDatabase(ApiContext context)
 {
     Console.WriteLine("Starting database seeding...");
@@ -144,11 +139,11 @@ async Task SeedDatabase(ApiContext context)
 
         context.Customers.AddRange(customers);
         await context.SaveChangesAsync();
-        Console.WriteLine($"✅ Seeded {customers.Count} customers");
+        Console.WriteLine($" Seeded {customers.Count} customers");
     }
     else
     {
-        Console.WriteLine("ℹ️  Customers already exist, skipping customer seeding");
+        Console.WriteLine("Customers already exist, skipping customer seeding");
     }
 
     // Seed orders if we don't have any
@@ -180,11 +175,11 @@ async Task SeedDatabase(ApiContext context)
 
         context.Orders.AddRange(orders);
         await context.SaveChangesAsync();
-        Console.WriteLine($"✅ Seeded {orders.Count} orders");
+        Console.WriteLine($"Seeded {orders.Count} orders");
     }
     else
     {
-        Console.WriteLine("ℹ️  Orders already exist, skipping order seeding");
+        Console.WriteLine("Orders already exist, skipping order seeding");
     }
 
     Console.WriteLine("Database seeding completed!");

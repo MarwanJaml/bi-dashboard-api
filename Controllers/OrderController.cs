@@ -29,8 +29,8 @@ namespace bi_dashboard_api.Controllers
             var totalCount = _context.Orders.Count();
 
             var data = _context.Orders
-                .Include(o => o.Customer)  // Include related Customer data
-                .OrderBy(o => o.Id)    // Order by placement date
+                .Include(o => o.Customer)  
+                .OrderBy(o => o.Id)    
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
@@ -50,9 +50,9 @@ namespace bi_dashboard_api.Controllers
         public IActionResult ByState()
         {
             var result = _context.Orders
-                .Include(o => o.Customer)  // Explicitly include Customer
-                .Where(o => o.Customer != null)  // Safety check
-                .GroupBy(o => o.Customer.Status)  // Group by Status
+                .Include(o => o.Customer)  
+                .Where(o => o.Customer != null)  
+                .GroupBy(o => o.Customer.Status)  
                 .Select(g => new
                 {
                     Status = g.Key,

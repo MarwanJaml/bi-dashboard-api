@@ -18,7 +18,6 @@ namespace bi_dashboard_api.Models
         [StringLength(50)]
         public string Status { get; set; }
 
-        // Add this navigation property
         public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }
